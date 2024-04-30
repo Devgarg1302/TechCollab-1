@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css2/globals.css" />
+    <link rel="stylesheet" href="../css2/style.css" />
+    <link rel="stylesheet" href="../header/footer.css">
+    <link rel="stylesheet" href="../css2/dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    
+  
+    <div class="desktop">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          
+          <div class="frame">
+            <div class="project-part">
+              <div class="project-title">
+                <p class="text-wrapper"><%= projName %></p>
+                <div class="complete-wrapper">
+                  
+                  <div class="complete-part" data-toggle="modal" data-target="#myModal2">
+                    <button>
+                      <a class="complete-btn">Updated</a>
+                    </button>
+                  </div>
+
+                  <div class="complete-part">
+                    <button>
+                      <a  href="/save2/<%= _id %>" class="complete-btn">Completed</a>
+                    </button>
+                  </div>
+                  
+                </div>
+                
+                
+              </div>
+              <div class="description">
+                <div class="text-wrapper-2">Description:</div>
+                <p class="p">
+                 <%= projDesc %>
+                </p>
+                <p class="project-ID">Project ID: <%= projId %><br />Team Size : <%= teamSize %><br />Listed on : <%= FormattedDate1 %></p>
+            </div>
+              <div class="project">
+                  <div class="text-wrapper-3">Mentors</div>
+                  <div class="group">
+                  <div class="overlap-group">
+                    <div class="flexcontainer-wrapper">
+                      <div class="flexcontainer">
+                        <p class="text">
+                          <span class="span">Name : <%= mentorName %> <br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Email : <%= mentorEmail%> <br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Contact Info : <%= mentorContact %> <br /></span>
+                        </p>
+                        <p class="text"><span class="span">Expertise : <%= mentorExper %> </span></p>
+                      </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="91" viewBox="0 0 98 91" fill="none">
+                      <g filter="url(#filter0_d_162_103)">
+                        <rect x="4" width="90" height="83" rx="41.5" fill="#E0D8D8"/>
+                        <path d="M49 8.39893C36.625 8.39893 26.5 18.8085 26.5 31.6346C26.5 44.4607 36.625 54.8703 49 54.8703C61.375 54.8703 71.5 44.4607 71.5 31.6346C71.5 18.8085 61.375 8.39893 49 8.39893ZM25.4875 54.8703C13.5625 55.335 4 63.421 4 73.4588V82.7531H94V73.4588C94 63.421 84.55 55.335 72.5125 54.8703C66.4375 60.5398 58.1125 64.1646 49 64.1646C39.8875 64.1646 31.5625 60.5398 25.4875 54.8703Z" fill="black"/>
+                      </g>
+                      <defs>
+                        <filter id="filter0_d_162_103" x="0" y="0" width="98" height="91" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                          <feOffset dy="4"/>
+                          <feGaussianBlur stdDeviation="2"/>
+                          <feComposite in2="hardAlpha" operator="out"/>
+                          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_162_103"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_162_103" result="shape"/>
+                        </filter>
+                     </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="project">
+                <div class="text-wrapper-3">Team</div>
+                <div class="overlap-group-wrapper">
+                  <div class="overlap-group">
+                    <div class="flexcontainer-wrapper">
+                      <div class="flexcontainer">
+                        <p class="text">
+                          <span class="span">Name : <%= member1 %> <br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Experience: <%= member1Exper %><br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Email : <%= member1Email %><br /></span>
+                        </p>
+                        <p class="text"><span class="span">Contact Info : <%= member1Contact %> </span></p>
+                      </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="91" viewBox="0 0 98 91" fill="none">
+                      <g filter="url(#filter0_d_162_103)">
+                        <rect x="4" width="90" height="83" rx="41.5" fill="#E0D8D8"/>
+                        <path d="M49 8.39893C36.625 8.39893 26.5 18.8085 26.5 31.6346C26.5 44.4607 36.625 54.8703 49 54.8703C61.375 54.8703 71.5 44.4607 71.5 31.6346C71.5 18.8085 61.375 8.39893 49 8.39893ZM25.4875 54.8703C13.5625 55.335 4 63.421 4 73.4588V82.7531H94V73.4588C94 63.421 84.55 55.335 72.5125 54.8703C66.4375 60.5398 58.1125 64.1646 49 64.1646C39.8875 64.1646 31.5625 60.5398 25.4875 54.8703Z" fill="black"/>
+                      </g>
+                      <defs>
+                        <filter id="filter0_d_162_103" x="0" y="0" width="98" height="91" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                          <feOffset dy="4"/>
+                          <feGaussianBlur stdDeviation="2"/>
+                          <feComposite in2="hardAlpha" operator="out"/>
+                          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_162_103"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_162_103" result="shape"/>
+                        </filter>
+                     </defs>
+                    </svg>
+                  </div>
+                  
+                </div>
+                <div class="overlap-group-wrapper">
+                  <div class="overlap-group">
+                    <div class="flexcontainer-wrapper">
+                      <div class="flexcontainer">
+                        <p class="text">
+                          <span class="span">Name : <%= member2 %> <br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Experience: <%= member2Exper %><br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Email : <%= member2Email %><br /></span>
+                        </p>
+                        <p class="text"><span class="span">Contact Info : <%= member2Contact %> </span></p>
+                      </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="91" viewBox="0 0 98 91" fill="none">
+                      <g filter="url(#filter0_d_162_103)">
+                        <rect x="4" width="90" height="83" rx="41.5" fill="#E0D8D8"/>
+                        <path d="M49 8.39893C36.625 8.39893 26.5 18.8085 26.5 31.6346C26.5 44.4607 36.625 54.8703 49 54.8703C61.375 54.8703 71.5 44.4607 71.5 31.6346C71.5 18.8085 61.375 8.39893 49 8.39893ZM25.4875 54.8703C13.5625 55.335 4 63.421 4 73.4588V82.7531H94V73.4588C94 63.421 84.55 55.335 72.5125 54.8703C66.4375 60.5398 58.1125 64.1646 49 64.1646C39.8875 64.1646 31.5625 60.5398 25.4875 54.8703Z" fill="black"/>
+                      </g>
+                      <defs>
+                        <filter id="filter0_d_162_103" x="0" y="0" width="98" height="91" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                          <feOffset dy="4"/>
+                          <feGaussianBlur stdDeviation="2"/>
+                          <feComposite in2="hardAlpha" operator="out"/>
+                          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_162_103"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_162_103" result="shape"/>
+                        </filter>
+                     </defs>
+                    </svg>
+                  </div>
+                  
+                </div>
+                <div class="overlap-group-wrapper">
+                  <div class="overlap-group">
+                    <div class="flexcontainer-wrapper">
+                      <div class="flexcontainer">
+                        <p class="text">
+                          <span class="span">Name : <%= member3 %> <br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Experience: <%= member3Exper %><br /></span>
+                        </p>
+                        <p class="text">
+                          <span class="span">Email : <%= member3Email %><br /></span>
+                        </p>
+                        <p class="text"><span class="span">Contact Info : <%= member3Contact %> </span></p>
+                      </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="91" viewBox="0 0 98 91" fill="none">
+                      <g filter="url(#filter0_d_162_103)">
+                        <rect x="4" width="90" height="83" rx="41.5" fill="#E0D8D8"/>
+                        <path d="M49 8.39893C36.625 8.39893 26.5 18.8085 26.5 31.6346C26.5 44.4607 36.625 54.8703 49 54.8703C61.375 54.8703 71.5 44.4607 71.5 31.6346C71.5 18.8085 61.375 8.39893 49 8.39893ZM25.4875 54.8703C13.5625 55.335 4 63.421 4 73.4588V82.7531H94V73.4588C94 63.421 84.55 55.335 72.5125 54.8703C66.4375 60.5398 58.1125 64.1646 49 64.1646C39.8875 64.1646 31.5625 60.5398 25.4875 54.8703Z" fill="black"/>
+                      </g>
+                      <defs>
+                        <filter id="filter0_d_162_103" x="0" y="0" width="98" height="91" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                          <feOffset dy="4"/>
+                          <feGaussianBlur stdDeviation="2"/>
+                          <feComposite in2="hardAlpha" operator="out"/>
+                          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_162_103"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_162_103" result="shape"/>
+                        </filter>
+                     </defs>
+                    </svg>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="remarks">
+                <div class="text-wrapper-10">Remarks:</div>
+                <p class="p2">
+                 <%= remarks %>
+                </p>
+              </div>
+            </div>
+            
+          </div>
+          <div class="nav">
+
+            <<input type="checkbox" id="check">
+            <label for="check">
+              <i class="fas fa-bars" id="btn"></i>
+              <i class="fas fa-times" id="cancel"></i>
+            </label>
+            <div class="sidebar">
+              <header>TechCollab</header>
+              <ul>
+                <li><a href="/home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+                <li onclick="openSection('section1')"><a href="/section1"><i class="fas fa-link"></i>My Profile</a></li>
+                <li onclick="openSection('section2')"><a href="/section2"><i class="fas fa-calendar-week"></i>My Projects</a></li>
+                <li><a href="/"><i class="far fa-question-circle"></i>Logout</a></li>
+          
+              </ul>
+            </div>
+    
+    
+            <p class="TTC">
+              <span class="text-wrapper-7">T</span><span class="text-wrapper-8">T</span><span
+                class="text-wrapper-7">C</span>
+            </p>
+            <div class="frame-3">
+              <div id="search-container">
+                <input type="text" id="search-input" placeholder="Search">
+                <ul id="autocomplete-list">
+                </ul>
+              </div>
+              <div class="div-wrapper">
+                <div class="text-wrapper-9"><a href="/">logout</a></div>
+              </div>
+            </div>
+    
+    
+    
+    
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>
+          Created with <i class="fa fa-heart"></i> by
+          <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+          - Read how I created this and how you can join the challenge
+          <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+        </p>
+      </footer>
+    </div>
+    <form method="POST" action="/save/<%= _id %>">
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">The Project will be Completed</h4>
+            </div>
+            <div class="modal-body">
+              <p>Remarks</p>
+              <textarea name="remarks" id="remarks" cols="50" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="projClose">Close</button>
+              <button type="submit" class="btn btn-default"><a class="projSave">Save</a></button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </form>
+
+    <form action="/updateCompleteProj/<%= _id %>" method="post">
+      <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Project Updation</h4>
+            </div>
+            <div class="modal2-body">
+              <div class="modal-body">
+                <p>Mentor</p>
+                <label for="mentorName">Name</label>
+                <input type="text" name="mentorName" id="mentorName">
+                <label for="mentorEmail">Email</label>
+                <input type="email" name="mentorEmail" id="mentorEmail">
+                <label for="mentorContact">Contact</label>
+                <input type="number" name="mentorContact" id="mentorContact">
+                <label for="mentorExper">Experience</label>
+                <input type="text" name="mentorExper" id="mentorExper">
+              </div>
+              <hr style="height:0px;border-top: 3px solid #b6b6b6;border-radius:1px">
+              <div class="modal-body">
+                <p>Project Information</p>
+                <label for="projName">Name</label>
+                <input type="text" name="projName" id="projName">
+                <label for="projId">ID</label>
+                <input type="number" name="projId" id="projId">
+                <label for="projDesc">Description</label>
+                <textarea name="projDesc" id="projDesc" cols="30" rows="5"></textarea>
+                <label for="teamSize">Team Size</label>
+                <input type="number" name="teamSize" id="teamSize">
+              </div>
+              <hr style="height:0px;border-top: 3px solid #b6b6b6;border-radius:1px">
+              <div class="modal-body">
+                <p>Member 1</p>
+                <label for="member1">Name</label>
+                <input type="text" name="member1" id="member1">
+                <label for="member1Email">Email</label>
+                <input type="email" name="member1Email" id="member1Email">
+                <label for="member1Contact">Contact</label>
+                <input type="number" name="member1Contact" id="member1Contact">
+                <label for="member1Exper">Expertise</label>
+                <input type="text" name="member1Exper" id="member1Exper">
+              </div>
+              <hr style="height:0px;border-top: 3px solid #b6b6b6;border-radius:1px">
+              <div class="modal-body">
+                <p>Member 2</p>
+                <label for="member2">Name</label>
+                <input type="text" name="member2" id="member2">
+                <label for="member2Email">Email</label>
+                <input type="email" name="member2Email" id="member2Email">
+                <label for="member2Contact">Contact</label>
+                <input type="number" name="member2Contact" id="member2Contact">
+                <label for="member2Exper">Expertise</label>
+                <input type="text" name="member2Exper" id="member2Exper">
+              </div>
+              <hr style="height:0px;border-top: 3px solid #b6b6b6;border-radius:1px">
+              <div class="modal-body">
+                <p>Member 3</p>
+                <label for="member3">Name</label>
+                <input type="text" name="member3" id="member3">
+                <label for="member3Email">Email</label>
+                <input type="email" name="member3Email" id="member3Email">
+                <label for="member3Contact">Contact</label>
+                <input type="number" name="member3Contact" id="member3Contact">
+                <label for="member3Exper">Expertise</label>
+                <input type="text" name="member3Exper" id="member3Exper">
+              </div>
+              <hr style="height:0px;border-top: 3px solid #b6b6b6;border-radius:1px">
+              <div class="modal-body">
+                <p>Remarks</p>
+                <textarea name="remarks" id="remarks" cols="30" rows="5"></textarea>
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="projClose">Close</button>
+              <button type="submit" class="btn btn-default"><a class="projSave">Save</a></button>
+            </div>
+          </div>
+          
+          
+
+        </div>
+      </div>
+    </form>
+    
+</body>
+</html>

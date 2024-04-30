@@ -1,0 +1,31 @@
+.india{
+  background-color: rgb(246, 218, 182);
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.india img{
+  height: 135px;
+  width: 120px;
+  border-radius: 100%;
+  filter:drop-shadow(5px 4px 4px rgba(0,0,0,0.3));
+
+}
+
+
+.india p{
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 480;
+}
+
+.unafraid{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  line-height: 2.2rem;
+  margin-left: 50px;
+  margin-right: 70px;
+  padding: 80px;
+  background-color: rgb(218, 190, 155);
+  color: aliceblue;
+  border-radius: 5%;
+}

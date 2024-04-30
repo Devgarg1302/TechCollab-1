@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FINAL SE PROJECT</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="slidingproj.css">
+  <link rel="stylesheet" href="proj.css">
+  <link rel="stylesheet" href="./profile/home.css">
+  <link rel="stylesheet" href="dashboardcss.css">
+  <link rel="stylesheet" href="topbox.css">
+  <link rel="stylesheet" href="edit.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .accordion-wrap {
+      max-width: 100%;
+      /* Adjust the max-width as needed */
+      margin: 10px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+  </label>
+  <div class="sidebar">
+    <header>TechCollab</header>
+    <ul>
+      <li><a href="/home"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+      <li onclick="openSection('section1')"><a ><i class="fas fa-link"></i>My Profile</a>
+      </li>
+      <li onclick="openSection('section2')"><a ><i class="fas fa-calendar-week"></i>My
+          Projects</a></li>
+      <li><a href="/"><i class="far fa-question-circle"></i>Logout</a></li>
+
+    </ul>
+  </div>
+  <section>
+
+
+    <main>
+
+      <br><br><br>
+
+      <div class="profile-box">
+        <img onclick="openSection('section4')" src="/images/profile.jpeg" alt="Profile Picture" id="profImg">
+        <div class="profile-info">
+          <h2>ASK_Team</h2>
+          <p class="bio">Web Developer | Blogger | Somophore Thapar University 2025
+
+          </p>
+          <p class="joined-text">Joined 2 months ago</p>
+        </div>
+      </div>
+
+
+      <div class="horizontal-bar">
+        <div class="square" onclick="openSection('section1')" id="showProf">Home</div>
+        <div class="square" onclick="openSection('section2')" id="showPro">Projects</div>
+        <div class="squared1"></div>
+        <div class="square" onclick="openSection('section3')" id="addPro">Add Project</div>
+      </div>
+      <br>
+
+      <!-- <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+
+            <div class="modal-header">
+              <h4 class="modal-title">Data Saved</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body">
+              Your data has been successfully saved.
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div> -->
+
+
+      <div id="section1" class="section" action="/section1">
+
+        <div class="skill-issue">
+          <div class="left-issue">
+            <img src="/images/success.png" alt="Success icon">
+          </div>
+          <% infos.forEach((infos)=>{ %>
+            <div class="right-issue">
+              <div class="right-issue-row1">
+                <h5>MY INTRO</h5>
+                <h3>About me</h3>
+
+                <p>
+                  <%= infos.bio %>
+                </p>
+
+                <div class="info">
+                  <span class="labelinfo">Name:</span>
+                  <%= infos.name %>
+                </div>
+                <div class="info">
+                  <span class="labelinfo">Batch:</span>
+                  <%= infos.branch %>
+                </div>
+                <div class="info">
+                  <span class="labelinfo">Gender</span>
+                  <%= infos.gender %>
+                </div>
+                <div class="info">
+                  <span class="labelinfo">Experience:</span>
+                  <%= infos.experience %>
+                </div>
+
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="right-issue-row">
+                <div class="columnn">
+                  <img src="/images/golden bar.png">
+                  <a href="<%= infos.github %>"><img src="/images/github.png"></a>
+                </div>
+                <div class="columnn">
+                  <img src="/images/golden bar.png">
+                  <a href="<%= infos.linkedin %>"><img src="/images/linkdin.png"></a>
+                </div>
+                <div class="columnn">
+                  <img src="/images/golden bar.png">
+                  <a href="<%= infos.persEmail %>"><img src="/images/email.png"></a>
+                </div>
+              </div>
+
+
+            </div>
+
+        </div>
+
+
+        <br>
+        <div class="skill">
+          <h3>Work Experience</h3>
+          <div class="complete-part" data-toggle="modal" data-target="#myModal3">
+            <button>
+              <a class="complete-btn">Add Work</a>
+            </button>
+          </div>
+        </div>
+
+        <div class="kill">
+          <% infos.work.forEach((work)=>{ %>
+            <div class="kill2">
+              <div class="kill3">
+                <a href="/deleteWork/<%= work._id %>" class="workDelete"><img src="/images/bin.png" alt="deleteWork"
+                    class="workDelete"></a>
+
+                <h1 class="kill-title">
+                  <%= work.workTitle %>
+                </h1>
+              </div>
+
+              <p class="kill-content">
+                <%= work.workContent %>
+              </p>
+            </div>
+            <% }); %>
+
+        </div>
+
+        <div class="skill">
+          <h3>Skills</h3>
+
+        </div>
+
+
+        <div class="skills10">
+
+          <% infos.skills.forEach((skills)=>{ %>
+
+            <div class="skills1" id="skills1">
+              <div class="skills2" id="skills2"><%= skills.skill %></div>
+            <a onclick="deleteSkill('<%= skills.id %>')" class="skillDelete" id="skillDelete">x</a>
+          </div>
+          <% }) %>
+          
+          <div id="skills11"></div>
+
+          
+          
+
+          <div class="skills3">
+            <button id="showSlider">
+              <a class="skills4">+</a>
+            </button>
+          </div>
+
+          <div id="sliderContainer" class="slider-container" style="display:none;">
+            <form id="dataForm">
+              <input type="text" min="0" max="100" class="slider" id="mySlider" name="mySlider">
+              <button type="submit" class="sliderAdd" id="sliderAdd">+</button>
+            </form>
+
+          </div>
+
+        </div>
+
+        <% }) %>
+      </div>
+
+
+      <div id="section2" class="section" action="/section2" method="POST">
+
+        <br>
+        <div class="details-container">
+          <div class="left-box">
+
+            <img src="/images/trophy nice icon.png" alt="Trophy icon">
+
+          </div>
+          <div class="right-box">
+            <div class="right-box-row1">
+              <h3>Project Summary</h3>
+            </div>
+            <div class="right-box-row">
+              <div class="column">
+                <h4>Active</h4>
+                <p>
+                  <%= countProj %>
+                </p>
+              </div>
+              <div class="column">
+                <h4>Completed</h4>
+                <p>
+                  <%= countComplete %>
+                </p>
+              </div>
+              <div class="column">
+                <h4>Mentored</h4>
+                <p>1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Active</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Completed</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Mentored</a>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab1">
+
+                  <div class=impbox>
+                    <div class="projectboxes">
+                      <div class="accordion-wrap">
+
+                        <% for(var i=(projects.length-1); i>=0; i--){ %>
+
+                          <div class="accordion" id="collapseOne">
+
+                            <div class="teaser" data-toggle="collapse" data-target="#contentOne" aria-expanded="false">
+
+                              <div class="time">
+                                <h5>
+                                  <%=projects[i].FormattedDate1%>
+                                </h5>
+                              </div>
+                              <div class="title">
+
+                                <a href="/delete/<%= projects[i]._id %>"><img src="/images/bin.png" alt="Delete"
+                                    id="deleteProj"></a>
+                                <h3>
+                                  <%=projects[i].projName%>
+                                </h3>
+                                <h6 class="theme">
+                                  <%=projects[i].mentorExper%>
+                                </h6>
+
+                              </div>
+
+                            </div>
+                            <div id="contentOne" class="collapse">
+                              <div class="content">
+                                <%=projects[i].projDesc.substring(0,60)+"...."%>
+                                  <a href="/project/<%= projects[i]._id %>">Read More</a>
+                              </div>
+                            </div>
+
+                          </div>
+                          <% } %>
+
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion" id="collapseOne">
+
+                              <div class="teaser" data-toggle="collapse" data-target="#contentOne"
+                                aria-expanded="false">
+
+                                <div class="time">
+                                  <h5>11 october-active</h5>
+                                </div>
+                                <div class="title">
+                                  <img src="/images/bin.png" alt="Delete">
+                                  <h3>Face recognition using GAN</h3>
+                                  <h6 class="theme">ML</h6>
+
+                                </div>
+
+                              </div>
+                              <div id="contentOne" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 1.
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- Accordion Item 2 -->
+                            <div class="accordion" id="collapseTwo">
+                              <div class="teaser" data-toggle="collapse" data-target="#contentTwo"
+                                aria-expanded="false">
+                                <div class="time">
+                                  <h5>12 October-active</h5>
+                                </div>
+                                <div class="title">
+                                  <img src="/images/bin.png" alt="Delete">
+                                  <h3>Whatsapp Clone</h3>
+                                  <h6 class="theme">Full stack</h6>
+                                </div>
+                              </div>
+                              <div id="contentTwo" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 2.
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Accordion Item 3 -->
+                            <div class="accordion" id="collapseThree">
+                              <div class="teaser" data-toggle="collapse" data-target="#contentThree"
+                                aria-expanded="false">
+                                <div class="time">
+                                  <h5>12 October-active</h5>
+                                </div>
+                                <div class="title">
+                                  <img src="/images/bin.png" alt="Delete">
+                                  <h3>Thapar Tech Collab</h3>
+                                  <h6 class="theme">Full stack</h6>
+                                </div>
+                              </div>
+                              <div id="contentThree" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 3.
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Add more accordion items as needed -->
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="tab-pane fade" id="tab2">
+                  <div class=impbox>
+                    <div class="projectboxes">
+                      <div class="accordion-wrap">
+
+                        <% for(var i=(completes.length-1); i>=0; i--){ %>
+
+                          <div class="accordion" id="collapseOne">
+                            <div class="teaser" data-toggle="collapse" data-target="#contentOne" aria-expanded="false">
+                              <div class="time">
+                                <h5>
+                                  <%= completes[i].FormattedDate1 %>
+                                </h5>
+                              </div>
+                              <div class="title">
+                                <h3>
+                                  <%= completes[i].projName %>
+                                </h3>
+                                <h6 class="theme">
+                                  <%= completes[i].mentorExper %>
+                                </h6>
+                              </div>
+                            </div>
+                            <div id="contentOne" class="collapse">
+                              <div class="content">
+                                <%= completes[i].projDesc.substring(0,60)+"...." %>
+                                  <a href="/complete/<%= completes[i]._id %>">Read More</a>
+                              </div>
+                            </div>
+                          </div>
+                          <% } %>
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion" id="collapseOne">
+                              <div class="teaser" data-toggle="collapse" data-target="#contentOne"
+                                aria-expanded="false">
+                                <div class="time">
+                                  <h5>11 october- 1 November</h5>
+                                </div>
+                                <div class="title">
+                                  <h3>Function generation using GAN</h3>
+                                  <h6 class="theme">ML</h6>
+                                </div>
+                              </div>
+                              <div id="contentOne" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 1.
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Accordion Item 2 -->
+                            <div class="accordion" id="collapseTwo">
+                              <div class="teaser" data-toggle="collapse" data-target="#contentTwo"
+                                aria-expanded="false">
+                                <div class="time">
+                                  <h5>12 October- 25 October</h5>
+                                </div>
+                                <div class="title">
+                                  <h3>Science app Clone</h3>
+                                  <h6 class="theme">Full stack</h6>
+                                </div>
+                              </div>
+                              <div id="contentTwo" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 2.
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Accordion Item 3 -->
+                            <div class="accordion" id="collapseThree">
+                              <div class="teaser" data-toggle="collapse" data-target="#contentThree"
+                                aria-expanded="false">
+                                <div class="time">
+                                  <h5>12 October- 20 October</h5>
+                                </div>
+                                <div class="title">
+                                  <h3>Thapar Dispensary Management system</h3>
+                                  <h6 class="theme">DBMS</h6>
+                                </div>
+                              </div>
+                              <div id="contentThree" class="collapse">
+                                <div class="content">
+                                  Content for accordion item 3.
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Add more accordion items as needed -->
+
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="tab3">
+
+                  <div class=impbox>
+                    <div class="projectboxes">
+                      <div class="accordion-wrap">
+                        <!-- Accordion Item 1 -->
+                        <div class="accordion" id="collapseOne">
+                          <div class="teaser" data-toggle="collapse" data-target="#contentOne" aria-expanded="false">
+                            <div class="time">
+                              <h5>11 october-active</h5>
+                            </div>
+                            <div class="title">
+                              <h3>Face recognition using GAN</h3>
+                              <h6 class="theme">ML</h6>
+                            </div>
+                          </div>
+                          <div id="contentOne" class="collapse">
+                            <div class="content">
+                              Content for accordion item 1.
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="accordion" id="collapseTwo">
+                          <div class="teaser" data-toggle="collapse" data-target="#contentTwo" aria-expanded="false">
+                            <div class="time">
+                              <h5>12 October-active</h5>
+                            </div>
+                            <div class="title">
+                              <h3>Whatsapp Clone</h3>
+                              <h6 class="theme">Full syack</h6>
+                            </div>
+                          </div>
+                          <div id="contentTwo" class="collapse">
+                            <div class="content">
+                              Content for accordion item 2.
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="accordion" id="collapseThree">
+                          <div class="teaser" data-toggle="collapse" data-target="#contentThree" aria-expanded="false">
+                            <div class="time">
+                              <h5>12 October-active</h5>
+                            </div>
+                            <div class="title">
+                              <h3>Thapar Tech Collab</h3>
+                              <h6 class="theme">Full stack</h6>
+                            </div>
+                          </div>
+                          <div id="contentThree" class="collapse">
+                            <div class="content">
+                              Content for accordion item 3.
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Add more accordion items as needed -->
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="section3" class="section">
+
+        <div class="container bootstrap snippets bootdeys">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9">
+              <h3>Project Info</h3>
+              <form class="form-horizontal" id="myForm" action="/submit" method="post">
+                <br />
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">MENTOR INFORMATION</h4>
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mentor" name="mentor" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Email ID</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="mentorEmail" name="mentorEmail" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Contact Info.</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="mentorContact" name="mentorContact" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Expertise</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mentorExper" name="mentorExper" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">PROJECT INFORMATION</h4>
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Project Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="projName" name="projName" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Project ID</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="projId" name="projId" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Description</label>
+                      <div class="col-sm-10">
+                        <textarea rows="3" class="form-control" id="projDesc" name="projDesc"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Team Size</label>
+                      <div class="col-sm-10">
+                        <input type="Number" class="form-control" id="teamSize" name="teamSize" />
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Member 1</h4>
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member1" name="member1" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Email ID</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="member1Email" name="member1Email" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Contact Info.</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="member1Contact" name="member1Contact" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Expertise</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member1Exper" name="member1Exper" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Member 2</h4>
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member2" name="member2" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Email ID</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="member2Email" name="member2Email" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Contact Info.</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="member2Contact" name="member2Contact" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Expertise</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member2Exper" name="member2Exper" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Member 3</h4>
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member3" name="member3" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Email ID</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="member3Email" name="member3Email" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Contact Info.</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="member3Contact" name="member3Contact" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Expertise</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="member3Exper" name="member3Exper" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                      <button type="submit" class="btn btn-primary" id="sa">Save</button>
+                      <button type="reset" class="btn btn-default">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="section4" class="section">
+
+        <div class="container bootstrap snippets bootdeys">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9">
+              <h3>Profile</h3>
+              <% for(var i=(infos.length-1); i>=0; i--){ %>
+                <form class="form-horizontal" action="/update/<%= infos[i]._id %>" method="post">
+                  <% } %>
+                    <br>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">PERSONAL INFORMATION</h4>
+                      </div>
+                      <div class="panel-body">
+
+
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Branch & Year</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="branch" name="branch">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Date Of Birth</label>
+                          <div class="col-sm-10">
+                            <input type="date" class="form-control" id="age" name="age">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Gender</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="gender" name="gender">
+                              <option selected="">Select gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Other</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Bio</label>
+                          <div class="col-sm-10">
+                            <textarea rows="1" class="form-control" id="bio" name="bio"></textarea>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Experience</label>
+                          <div class="col-sm-10">
+                            <textarea rows="3" class="form-control" id="experience" name="experience"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">Work Experience</h4>
+                      </div>
+                      <div class="panel-body">
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Title</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="workTitle" name="workTitle">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Content</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="workContent" name="workContent">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">CONTACT INFORMATION</h4>
+                      </div>
+                      <div class="panel-body">
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Email ID</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="persEmail" name="persEmail">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Linkedin ID</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="linkedin" name="linkedin">
+                          </div>
+                        </div>
+
+
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Github</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="github" name="github">
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                    <!-- 
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">CHANGE PASSWORD </h4>
+                  </div>
+                  <div class="panel-body"> -->
+
+                    <!-- 
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="password">New password</label>
+                      <div class="col-sm-10">
+                        <input type="password" id="password" name="password" oninput="validatePassword()"
+                          class="form-control">
+                        <p class="error" id="passwordError" style="color: red; font-size: small;"></p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="confirmPassword">Confirm password </label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                          oninput="validatePassword()">
+                        <p class="error" id="confirmpasswordError" style="color: red; font-size: small;"></p>
+                      </div>
+                    </div> -->
+
+                    <!-- 
+                    <div class="form-group">
+                      <div class="col-sm-10 col-sm-offset-2">
+                        <div class="checkbox">
+                          <input type="checkbox" id="checkbox_1">
+                          <label for="checkbox_1">Change password</label>
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div class="form-group">
+                      <div class="col-sm-10 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary" id="sav">Save</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                      </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.4.1.js"></script>
+
+  <script>
+    var searchResults = document.getElementById('skills11');
+    $(document).ready(function () {
+      $('#dataForm').submit(function (event) {
+        event.preventDefault();
+        var skill = $('#mySlider').val();
+        $.ajax({
+          type: 'POST',
+          url: '/getData',
+          data: { skill: skill },
+          success: function (response){
+            console.log('Data saved successfully');
+            searchResults.innerHTML += `<div class="skills1" id="skills1"><div class="skills2" id="skills2">${skill}</div><a onclick="deleteSkill2()" class="skillDelete" id="skillDelete">x</a></div>`;
+          },
+          error: function (error) {
+            console.error('Error saving data:', error);
+          }
+        });
+      })
+    });
+
+
+    function deleteSkill(id){
+      fetch('/deleteText/' + id, { method: 'GET' })
+    .then(response => {
+      if (response.ok) {
+        
+          var parentElement = document.getElementById('skills1');
+          parentElement.remove();
+        
+      } else {
+        console.error('Failed to delete skill');
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting skill:', error);
+    });
+    }
+
+    function deleteSkill2(){
+      var skillDelete = document.getElementById('skillDelete');
+        if (event.target.classList.contains('skillDelete')) {
+          var parentElement = event.target.closest('.skills1');
+          parentElement.remove();
+        }
+    }
+
+
+    
+
+  </script>
+
+  <script>
+    // Activate the first tab on page load
+    document.getElementById('tab1-tab').click();
+
+    // Slide transition when switching tabs
+    $('.nav-link').on('shown.bs.tab', function () {
+      var targetTabPane = $($(this).attr('href'));
+      targetTabPane.addClass('show');
+      setTimeout(function () {
+        targetTabPane.siblings('.tab-pane').removeClass('show');
+      }, 300); // Adjust the duration of the transition (in milliseconds)
+    });
+
+
+
+  </script>
+  <script src="../src/edit.js"></script>
+  <script>
+    function openSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section) => {
+        section.classList.remove('active');
+      });
+
+      // Show the clicked section
+      const section = document.getElementById(sectionId);
+      section.classList.add('active');
+    }
+  </script>
+
+  <script>
+    document.getElementById("showSlider").addEventListener("click", function () {
+      var sliderContainer = document.getElementById("sliderContainer");
+      if (sliderContainer.style.display === "none") {
+        sliderContainer.style.display = "block";
+      } else {
+        sliderContainer.style.display = "none";
+      }
+    });
+  </script>
+
+  <script>
+    document.getElementById('sliderAdd').addEventListener("click", function () {
+      var sliderContainer = document.getElementById("sliderContainer");
+      sliderContainer.style.display = "none";
+    })
+
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <% for(var i=(infos.length-1); i>=0 ; i--){ %>
+    <form method="POST" action="/work/<%= infos[i]._id %>">
+      <% } %>
+        <div class="modal fade" id="myModal3" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Work Experience</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              </div>
+              <div class="modal-body">
+                <p>Title</p>
+                <input type="text" name="workTitle" id="workTitle">
+              </div>
+              <div class="modal-body">
+                <p>Content</p>
+                <textarea name="workContent" id="workContent" cols="50" rows="3"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="projClose">Close</button>
+                <button type="submit" class="btn btn-default"><a class="projSave">Save</a></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

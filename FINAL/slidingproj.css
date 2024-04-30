@@ -1,0 +1,60 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+  }
+  
+  .container-fluid {
+    padding: 0px 0px;
+  }
+  
+  .nav-tabs {
+    background-color: #fbf8f8 ;
+    border-radius: 5px;
+  }
+  
+  .nav-link {
+    color: #343a40;
+    font-weight: bold;
+    font-size: large;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-link:hover {
+    margin: 0;
+    border: 0.8px solid;
+    padding: 10px 15px;
+    color: #232323;
+    background-color: #232323;
+  }
+  
+  .tab-content {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+  }
+  
+  h2 {
+    color: #343a40;
+  }
+  
+  p {
+    color: #6c757d;
+  }
+  
+  .tab-pane {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .tab-pane:not(.show) {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
