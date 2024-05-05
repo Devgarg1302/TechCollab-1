@@ -380,6 +380,18 @@ app.get('/delete/:id',isAuthenticated, async (req, res) => {
     }
 });
 
+app.get('/delete2/:id',isAuthenticated, async (req, res) => {
+    const id = req.params.id;
+    try {
+        await Complete.findByIdAndDelete(id);
+        console.log('Deleted document with ID ${id}');
+        res.redirect('/section1');
+    } catch (error) {
+        console.error('Error deleting data from MongoDB:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 app.get('/project/:id',isAuthenticated, async (req, res) => {
     const id = req.params.id;
@@ -624,12 +636,7 @@ app.post('/getProjects', async(req,res)=>{
     let payload2 =   req.body.payload.trim();
     let search = await Project.find({projName: {$regex: new RegExp('^'+payload+'.*','i')}}).exec();
     let search2 = await Complete.find({projName: {$regex: new RegExp('^'+payload2+'.*','i')}}).exec();
-    // if(search){
-    //     res.send({payload: search});
-    // }
-    // else{
-    //     res.send({payload: search2});
-    // }
+   
     res.send({payload: search,payload2: search2});
 })
 
@@ -641,7 +648,15 @@ app.post('/getData',isAuthenticated, async(req,res)=>{
     
     skill.skills.push({skill:payload});
     await skill.save();
-    res.send({payload:payload})
+
+    const skill2 = await Info.findOne({"skills.skill":payload},{ 'skills.$': 1 });
+    
+    const skill3 = skill2.skills[0]._id;
+
+    const skillId = skill3.toString();
+    
+    console.log(skill3);
+    res.send({response:payload, _id:skillId})
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Internal Server Error');

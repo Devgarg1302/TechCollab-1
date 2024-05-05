@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FINAL SE PROJECT</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -157,28 +157,28 @@
           <h3>Work Experience</h3>
           <div class="complete-part" data-toggle="modal" data-target="#myModal3">
             <button>
-              <a class="complete-btn">Add Work</a>
+              <a class="complete-btn" id="complete-btn">Add Work</a>
             </button>
           </div>
         </div>
 
-        <div class="kill">
-          <% infos.work.forEach((work)=>{ %>
+        <div class="kill" id="kill">
+          <% for(var i=(infos.work.length-1); i>=0; i--){ %>
             <div class="kill2">
               <div class="kill3">
-                <a href="/deleteWork/<%= work._id %>" class="workDelete"><img src="/images/bin.png" alt="deleteWork"
+                <a href="/deleteWork/<%= infos.work[i]._id %>" class="workDelete"><img src="/images/bin.png" alt="deleteWork"
                     class="workDelete"></a>
 
                 <h1 class="kill-title">
-                  <%= work.workTitle %>
+                  <%= infos.work[i].workTitle %>
                 </h1>
               </div>
 
               <p class="kill-content">
-                <%= work.workContent %>
+                <%= infos.work[i].workContent %>
               </p>
             </div>
-            <% }); %>
+            <% } %>
 
         </div>
 
@@ -280,7 +280,7 @@
 
                   <div class=impbox>
                     <div class="projectboxes">
-                      <div class="accordion-wrap">
+                      <div class="accordion-wrap" id="accordion-wrap">
 
                         <% for(var i=(projects.length-1); i>=0; i--){ %>
 
@@ -310,79 +310,14 @@
                             <div id="contentOne" class="collapse">
                               <div class="content">
                                 <%=projects[i].projDesc.substring(0,60)+"...."%>
-                                  <a href="/project/<%= projects[i]._id %>">Read More</a>
+                                  <a href="/project/<%= projects[i]._id %>" id="readMore">Read More</a>
                               </div>
                             </div>
 
                           </div>
                           <% } %>
 
-                            <!-- Accordion Item 1 -->
-                            <div class="accordion" id="collapseOne">
-
-                              <div class="teaser" data-toggle="collapse" data-target="#contentOne"
-                                aria-expanded="false">
-
-                                <div class="time">
-                                  <h5>11 october-active</h5>
-                                </div>
-                                <div class="title">
-                                  <img src="/images/bin.png" alt="Delete">
-                                  <h3>Face recognition using GAN</h3>
-                                  <h6 class="theme">ML</h6>
-
-                                </div>
-
-                              </div>
-                              <div id="contentOne" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 1.
-                                </div>
-                              </div>
-
-                            </div>
-
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion" id="collapseTwo">
-                              <div class="teaser" data-toggle="collapse" data-target="#contentTwo"
-                                aria-expanded="false">
-                                <div class="time">
-                                  <h5>12 October-active</h5>
-                                </div>
-                                <div class="title">
-                                  <img src="/images/bin.png" alt="Delete">
-                                  <h3>Whatsapp Clone</h3>
-                                  <h6 class="theme">Full stack</h6>
-                                </div>
-                              </div>
-                              <div id="contentTwo" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 2.
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Accordion Item 3 -->
-                            <div class="accordion" id="collapseThree">
-                              <div class="teaser" data-toggle="collapse" data-target="#contentThree"
-                                aria-expanded="false">
-                                <div class="time">
-                                  <h5>12 October-active</h5>
-                                </div>
-                                <div class="title">
-                                  <img src="/images/bin.png" alt="Delete">
-                                  <h3>Thapar Tech Collab</h3>
-                                  <h6 class="theme">Full stack</h6>
-                                </div>
-                              </div>
-                              <div id="contentThree" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 3.
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Add more accordion items as needed -->
+                            
 
                       </div>
                     </div>
@@ -393,18 +328,21 @@
                 <div class="tab-pane fade" id="tab2">
                   <div class=impbox>
                     <div class="projectboxes">
-                      <div class="accordion-wrap">
+                      <div class="accordion-wrap" id="accordion-wrap2">
 
                         <% for(var i=(completes.length-1); i>=0; i--){ %>
 
-                          <div class="accordion" id="collapseOne">
-                            <div class="teaser" data-toggle="collapse" data-target="#contentOne" aria-expanded="false">
+                          <div class="accordion" id="collapseTwo">
+                            <div class="teaser" data-toggle="collapse" data-target="#contentTwo" aria-expanded="false">
                               <div class="time">
                                 <h5>
                                   <%= completes[i].FormattedDate1 %>
                                 </h5>
                               </div>
                               <div class="title">
+                                <a href="/delete2/<%= completes[i]._id %>">
+                                  <img src="/images/bin.png" alt="Delete" id="deleteComplete">
+                                </a>
                                 <h3>
                                   <%= completes[i].projName %>
                                 </h3>
@@ -413,73 +351,15 @@
                                 </h6>
                               </div>
                             </div>
-                            <div id="contentOne" class="collapse">
+                            <div id="contentTwo" class="collapse">
                               <div class="content">
                                 <%= completes[i].projDesc.substring(0,60)+"...." %>
-                                  <a href="/complete/<%= completes[i]._id %>">Read More</a>
+                                  <a href="/complete/<%= completes[i]._id %>" id="readMore2" class="readMore2">Read More</a>
                               </div>
                             </div>
                           </div>
                           <% } %>
-                            <!-- Accordion Item 1 -->
-                            <div class="accordion" id="collapseOne">
-                              <div class="teaser" data-toggle="collapse" data-target="#contentOne"
-                                aria-expanded="false">
-                                <div class="time">
-                                  <h5>11 october- 1 November</h5>
-                                </div>
-                                <div class="title">
-                                  <h3>Function generation using GAN</h3>
-                                  <h6 class="theme">ML</h6>
-                                </div>
-                              </div>
-                              <div id="contentOne" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 1.
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion" id="collapseTwo">
-                              <div class="teaser" data-toggle="collapse" data-target="#contentTwo"
-                                aria-expanded="false">
-                                <div class="time">
-                                  <h5>12 October- 25 October</h5>
-                                </div>
-                                <div class="title">
-                                  <h3>Science app Clone</h3>
-                                  <h6 class="theme">Full stack</h6>
-                                </div>
-                              </div>
-                              <div id="contentTwo" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 2.
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Accordion Item 3 -->
-                            <div class="accordion" id="collapseThree">
-                              <div class="teaser" data-toggle="collapse" data-target="#contentThree"
-                                aria-expanded="false">
-                                <div class="time">
-                                  <h5>12 October- 20 October</h5>
-                                </div>
-                                <div class="title">
-                                  <h3>Thapar Dispensary Management system</h3>
-                                  <h6 class="theme">DBMS</h6>
-                                </div>
-                              </div>
-                              <div id="contentThree" class="collapse">
-                                <div class="content">
-                                  Content for accordion item 3.
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Add more accordion items as needed -->
-
+                            
                       </div>
                     </div>
 
@@ -837,28 +717,6 @@
 
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <h4 class="panel-title">Work Experience</h4>
-                      </div>
-                      <div class="panel-body">
-
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Title</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="workTitle" name="workTitle">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Content</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="workContent" name="workContent">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
                         <h4 class="panel-title">CONTACT INFORMATION</h4>
                       </div>
                       <div class="panel-body">
@@ -959,9 +817,10 @@
           type: 'POST',
           url: '/getData',
           data: { skill: skill },
-          success: function (response){
+          success: function (res){
             console.log('Data saved successfully');
-            searchResults.innerHTML += `<div class="skills1" id="skills1"><div class="skills2" id="skills2">${skill}</div><a onclick="deleteSkill2()" class="skillDelete" id="skillDelete">x</a></div>`;
+            
+            searchResults.innerHTML += `<div class="skills1" id="skills1"><div class="skills2" id="skills2">${res.response}</div><a onclick="deleteSkill(${res._id})" class="skillDelete" id="skillDelete">x</a></div>`;
           },
           error: function (error) {
             console.error('Error saving data:', error);
@@ -976,9 +835,9 @@
     .then(response => {
       if (response.ok) {
         
-          var parentElement = document.getElementById('skills1');
-          parentElement.remove();
-        
+        var parentElement = document.getElementById('skills1');
+        parentElement.remove();
+
       } else {
         console.error('Failed to delete skill');
       }
@@ -986,6 +845,16 @@
     .catch(error => {
       console.error('Error deleting skill:', error);
     });
+    }
+
+    function deleteSkill3(){
+      var removeButtons = document.querySelector(".skills1");
+        removeButtons.forEach(function(button) {
+          button.addEventListener('click', function() {
+              var parentElement = button.parentElement;
+              parentElement.remove();
+          });
+        });
     }
 
     function deleteSkill2(){
@@ -1080,7 +949,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="projClose">Close</button>
-                <button type="submit" class="btn btn-default"><a class="projSave">Save</a></button>
+                <button type="submit" class="btn btn-default" id="projSave"><a class="projSave">Save</a></button>
               </div>
             </div>
 

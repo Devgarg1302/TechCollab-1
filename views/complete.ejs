@@ -25,13 +25,13 @@
                   
                   <div class="complete-part" data-toggle="modal" data-target="#myModal2">
                     <button>
-                      <a class="complete-btn">Updated</a>
+                      <a class="complete-btn" id="projEdit">Updated</a>
                     </button>
                   </div>
 
                   <div class="complete-part">
                     <button>
-                      <a  href="/save2/<%= _id %>" class="complete-btn">Completed</a>
+                      <a  href="/save2/<%= _id %>" class="complete-btn" id="projGo">Active Project</a>
                     </button>
                   </div>
                   
@@ -360,7 +360,7 @@
             
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" id="projClose">Close</button>
-              <button type="submit" class="btn btn-default"><a class="projSave">Save</a></button>
+              <button type="submit" class="btn btn-default"><a class="projSave" id="projSaved3">Save</a></button>
             </div>
           </div>
           
