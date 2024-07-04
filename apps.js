@@ -17,10 +17,10 @@ const { Readable } = require('stream');
 const multer = require('multer');
 
 const corsOptions = {
-    origin: 'http://localhost:3001/', // Replace with your React application's domain
-    methods: 'GET,POST', // Allow only specified methods
-    allowedHeaders: 'Content-Type,Authorization', // Allow only specified headers
-    credentials: true // Allow credentials (cookies, authorization headers)
+    origin: 'http://localhost:3001/',
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true
 };
 
 app.set('views', path.join(__dirname, 'views'));
@@ -33,11 +33,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Methods", "*"); // Replace "*" with allowed methods
+    res.setHeader("Access-Control-Allow-Methods", "*");
     next();
 });
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Headers", "*"); // Customize as needed
+    res.setHeader("Access-Control-Allow-Headers", "*");
     next();
 });
 
@@ -203,7 +203,6 @@ app.get('/', (req, res) => {
 app.get('/register', (req, res) => {
     
     passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/login' })
-    // res.render("login");
 })
 
 app.get('/login', (req, res) => {
@@ -275,39 +274,7 @@ app.post('/update/:id',isAuthenticated, async (req, res) => {
 
     try {
         const id = req.params.id;
-        // var { name, branch, bio, experience, gender, age, persEmail, github, linkedin, workTitle, workContent } = req.body;
-        // const info = new Info({
-        //     name: name,
-        //     branch: branch,
-        //     age: age,
-        //     gender: gender,
-        //     bio: bio,
-        //     experience: experience,
-        //     persEmail: persEmail,
-        //     github: github,
-        //     linkedin: linkedin,
-        //     work:[{workTitle:workTitle,workContent:workContent}]
-            
-        // })
-        // info.save();
-        // res.redirect("/section1");
-
-        // var { name, branch, bio, experience,Gender, Age, persEmail, github, linkedin } = req.body;
-
-        // const updatedData = await Info.findByIdAndUpdate(id, {
-        //     Name: name,
-        //     Branch: branch,
-        //     Bio: bio,
-        //     Age: Age,
-        //     Gender: Gender,
-        //     Experience: experience,
-        //     email: persEmail,
-        //     github: github,
-        //     linkedin: linkedin
-        // }, { new: true });
-
         const updateObj = Object.fromEntries(Object.entries(req.body).filter(([key, value]) => value));
-
         const updatedData= await Info.findByIdAndUpdate(id,updateObj, { new: true });
 
         console.log('Updated document:', updatedData);
